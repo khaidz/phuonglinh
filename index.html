@@ -5,250 +5,404 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kế Toán Phương Linh - Giải pháp Thuế Trọn gói Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #fcfcfc;
         }
-        .text-primary { color: #c27803; } /* Màu cam từ logo */
+        .text-primary { color: #c27803; }
         .bg-primary { background-color: #c27803; }
         .border-primary { border-color: #c27803; }
         
         .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .hero-gradient {
-            background: radial-gradient(circle at top right, rgba(194, 120, 3, 0.05), transparent),
-                        radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.02), transparent);
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
+        /* Slider Styles */
+        .slide {
+            display: none;
+            animation: fade 1.5s ease-in-out;
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0.4; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Float Animation for Images */
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
         .service-card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-12px);
+            box-shadow: 0 20px 25px -5px rgba(194, 120, 3, 0.1), 0 10px 10px -5px rgba(194, 120, 3, 0.04);
         }
 
-        /* Tắt thanh cuộn nhưng vẫn cho phép cuộn */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c27803; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a16402; }
     </style>
 </head>
-<body class="text-slate-900">
+<body class="text-slate-900 overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <!-- Giả lập Logo -->
-                <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center p-1">
-                    <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+    <nav class="fixed top-0 w-full z-[100] glass-nav">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center p-1 shadow-lg transform rotate-3 hover:rotate-0 transition-transform">
+                    <i data-lucide="shield-check" class="text-white w-7 h-7"></i>
                 </div>
                 <div class="flex flex-col leading-none">
-                    <span class="font-bold text-lg tracking-tight uppercase">Phuong Linh</span>
-                    <span class="text-[10px] text-slate-500 font-medium uppercase tracking-widest">Tax Accounting</span>
+                    <span class="font-extrabold text-xl tracking-tight uppercase">Phuong Linh</span>
+                    <span class="text-[11px] text-primary font-bold uppercase tracking-[0.2em]">Tax Accounting</span>
                 </div>
             </div>
-            <a href="https://zalo.me/0918348822" class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+            
+            <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
+                <a href="#services" class="hover:text-primary transition-colors">Dịch vụ</a>
+                <a href="#process" class="hover:text-primary transition-colors">Quy trình</a>
+                <a href="#about" class="hover:text-primary transition-colors">Về chúng tôi</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Liên hệ</a>
+            </div>
+
+            <a href="https://zalo.me/0918348822" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shadow-lg shadow-amber-200">
                 <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span class="hidden sm:inline">Zalo Ngay</span>
-                <span class="sm:hidden">Liên hệ</span>
+                <span>Zalo Tư Vấn</span>
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-16 px-4 hero-gradient">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="inline-block px-3 py-1 bg-amber-50 text-primary text-xs font-bold rounded-full border border-amber-100 mb-6 uppercase tracking-wider">
-                Giải pháp Thuế 4.0
-            </span>
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                Giải pháp Kế toán Thuế tốt nhất cho <span class="text-primary italic">Doanh nghiệp nhỏ</span>
-            </h1>
-            <p class="text-slate-600 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                An tâm kinh doanh – Chúng tôi lo thuế! Dịch vụ trọn gói ONLINE, giúp bạn tiết kiệm 70% thời gian và chi phí.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-200">
-                    Nhận tư vấn miễn phí
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </a>
-                <div class="flex items-center justify-center gap-4 py-2">
-                    <div class="flex -space-x-2">
-                        <div class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold">PL</div>
-                        <div class="w-8 h-8 rounded-full bg-amber-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-primary">10Y</div>
+    <!-- Hero Section with Slider -->
+    <section class="relative h-[90vh] flex items-center overflow-hidden">
+        <!-- Slides -->
+        <div id="hero-slider" class="absolute inset-0 z-0">
+            <!-- Slide 1 -->
+            <div class="slide active absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2000" alt="Accounting" class="w-full h-full object-cover">
+                <div class="absolute inset-0 gradient-overlay"></div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1454165833767-13a6b060102b?auto=format&fit=crop&q=80&w=2000" alt="Consulting" class="w-full h-full object-cover">
+                <div class="absolute inset-0 gradient-overlay"></div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=2000" alt="Business" class="w-full h-full object-cover">
+                <div class="absolute inset-0 gradient-overlay"></div>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 w-full text-white">
+            <div class="max-w-3xl">
+                <span class="inline-block px-4 py-1.5 bg-primary/20 backdrop-blur-md text-primary text-xs font-black rounded-full border border-primary/30 mb-8 uppercase tracking-widest animate-bounce">
+                    CHUYÊN NGHIỆP • TẬN TÂM • UY TÍN
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]">
+                    Kiến tạo nền tảng <br>
+                    <span class="text-primary">Tài chính vững mạnh</span>
+                </h1>
+                <p class="text-slate-200 text-lg md:text-xl mb-12 max-w-xl leading-relaxed opacity-90">
+                    An tâm kinh doanh – Chúng tôi lo thuế! Dịch vụ trọn gói ONLINE, giúp bạn tiết kiệm 70% thời gian và rủi ro pháp lý.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="bg-primary text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-[#a16402] transition-all flex items-center gap-3 shadow-2xl shadow-amber-900/20">
+                        Nhận tư vấn ngay
+                        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                    </a>
+                    <div class="flex items-center gap-4 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-primary" alt="Client">
+                            <img src="https://i.pravatar.cc/100?u=2" class="w-10 h-10 rounded-full border-2 border-primary" alt="Client">
+                            <img src="https://i.pravatar.cc/100?u=3" class="w-10 h-10 rounded-full border-2 border-primary" alt="Client">
+                        </div>
+                        <span class="text-sm font-medium">500+ Doanh nghiệp đã tin dùng</span>
                     </div>
-                    <p class="text-sm font-medium text-slate-500">10 năm kinh nghiệm thực chiến</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+            <button onclick="setSlide(0)" class="slider-dot w-3 h-3 rounded-full bg-white/30 transition-all active-dot"></button>
+            <button onclick="setSlide(1)" class="slider-dot w-3 h-3 rounded-full bg-white/30 transition-all"></button>
+            <button onclick="setSlide(2)" class="slider-dot w-3 h-3 rounded-full bg-white/30 transition-all"></button>
         </div>
     </section>
 
     <!-- Stats Bar -->
-    <div class="max-w-6xl mx-auto px-4 -mt-8 relative z-10">
-        <div class="bg-white rounded-2xl shadow-xl shadow-slate-100 border border-slate-50 p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="text-center">
-                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">10+</div>
-                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Năm kinh nghiệm</div>
+    <div class="max-w-6xl mx-auto px-4 -mt-16 relative z-30 reveal">
+        <div class="bg-white rounded-[2rem] shadow-2xl shadow-slate-200 border border-slate-50 p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center group">
+                <div class="text-4xl md:text-5xl font-black text-primary mb-2 flex justify-center">
+                    <span class="counter" data-target="10">0</span>+
+                </div>
+                <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest group-hover:text-primary transition-colors">Năm kinh nghiệm</div>
             </div>
-            <div class="text-center border-l border-slate-100">
-                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">500+</div>
-                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Khách hàng</div>
+            <div class="text-center border-l border-slate-100 group">
+                <div class="text-4xl md:text-5xl font-black text-primary mb-2 flex justify-center">
+                    <span class="counter" data-target="500">0</span>+
+                </div>
+                <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest group-hover:text-primary transition-colors">Khách hàng</div>
             </div>
-            <div class="text-center border-l border-slate-100">
-                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">100%</div>
-                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Làm việc Online</div>
+            <div class="text-center border-l border-slate-100 group">
+                <div class="text-4xl md:text-5xl font-black text-primary mb-2 flex justify-center">
+                    <span class="counter" data-target="100">0</span>%
+                </div>
+                <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest group-hover:text-primary transition-colors">Làm việc Online</div>
             </div>
-            <div class="text-center border-l border-slate-100">
-                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">0đ</div>
-                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Phí tư vấn ban đầu</div>
+            <div class="text-center border-l border-slate-100 group">
+                <div class="text-4xl md:text-5xl font-black text-primary mb-2 flex justify-center">
+                    <span class="counter" data-target="0">0</span>đ
+                </div>
+                <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest group-hover:text-primary transition-colors">Phí tư vấn đầu</div>
             </div>
         </div>
     </div>
 
     <!-- Services Section -->
-    <section class="py-20 px-4 bg-white" id="services">
+    <section class="py-20 px-4 bg-[#fcfcfc]" id="services">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Dịch vụ chúng tôi cung cấp</h2>
-                <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-extrabold mb-4 text-slate-900">Dịch vụ chuyên nghiệp</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Chúng tôi cung cấp giải pháp toàn diện cho mọi nhu cầu kế toán và thuế của doanh nghiệp bạn.</p>
+                <div class="w-24 h-2 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service 1 -->
-                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
-                        <i data-lucide="calculator" class="text-primary w-6 h-6"></i>
+                <div class="service-card p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-8 transform -rotate-3 group-hover:rotate-0 transition-transform">
+                        <i data-lucide="calculator" class="text-primary w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 leading-snug">Kê khai thuế GTGT, TNCN, TNDN</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Đảm bảo kê khai đúng hạn (Tháng/Quý), tránh mọi rủi ro về mức phạt thuế.</p>
+                    <h3 class="text-xl font-bold mb-4 leading-tight">Kê khai thuế Trọn gói</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Đảm bảo kê khai đúng hạn (Tháng/Quý), tối ưu hóa nghĩa vụ thuế.</p>
+                    <a href="#" class="text-primary font-bold text-xs flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest">
+                        Xem chi tiết <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
-                        <i data-lucide="file-text" class="text-primary w-6 h-6"></i>
+                <div class="service-card p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 transform rotate-3">
+                        <i data-lucide="file-text" class="text-blue-600 w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 leading-snug">Lập Báo cáo tài chính năm</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Quyết toán thuế cuối năm chính xác, minh bạch cho doanh nghiệp và hộ kinh doanh.</p>
+                    <h3 class="text-xl font-bold mb-4 leading-tight">Báo cáo Tài chính</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Quyết toán thuế cuối năm chính xác, minh bạch cho mọi loại hình DN.</p>
+                    <a href="#" class="text-blue-600 font-bold text-xs flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest">
+                        Xem chi tiết <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
-                        <i data-lucide="book-open" class="text-primary w-6 h-6"></i>
+                <div class="service-card p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-8 transform -rotate-3">
+                        <i data-lucide="book-open" class="text-green-600 w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 leading-snug">Hoàn thiện sổ sách nội bộ</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Xây dựng hệ thống sổ sách kế toán khoa học, dễ dàng theo dõi dòng tiền.</p>
+                    <h3 class="text-xl font-bold mb-4 leading-tight">Sổ sách Nội bộ</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Xây dựng hệ thống sổ sách khoa học, kiểm soát dòng tiền hiệu quả.</p>
+                    <a href="#" class="text-green-600 font-bold text-xs flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest">
+                        Xem chi tiết <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
-                        <i data-lucide="users" class="text-primary w-6 h-6"></i>
+                <div class="service-card p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm reveal" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-8 transform rotate-3">
+                        <i data-lucide="users" class="text-purple-600 w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 leading-snug">Lao động & Bảo hiểm xã hội</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Hỗ trợ soạn thảo hợp đồng, báo cáo lao động và thủ tục BHXH nhanh chóng.</p>
+                    <h3 class="text-xl font-bold mb-4 leading-tight">BHXH & Lao động</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Hợp đồng lao động, thang bảng lương và thủ tục BHXH nhanh gọn.</p>
+                    <a href="#" class="text-purple-600 font-bold text-xs flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest">
+                        Xem chi tiết <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us -->
-    <section class="py-20 px-4 bg-slate-900 text-white overflow-hidden relative">
-        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2">
-                <h2 class="text-4xl font-bold mb-8 leading-tight">Vì sao hàng trăm doanh nghiệp tin tưởng chúng tôi?</h2>
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
-                            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+    <!-- Why Us (Image + Text) -->
+    <section class="py-16 px-4 bg-slate-900 text-white overflow-hidden" id="about">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+            <div class="lg:w-1/2 reveal">
+                <h2 class="text-5xl font-black mb-10 leading-tight">Tại sao chọn <br><span class="text-primary italic">Kế Toán Phương Linh?</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary border border-primary/30">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Chuyên môn sâu</h4>
-                            <p class="text-slate-400 text-sm italic">"Am hiểu luật thuế, xử lý mọi tình huống nhanh nhẹn."</p>
-                        </div>
+                        <h4 class="font-bold text-xl">Xử lý Thần tốc</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Chúng tôi cam kết hoàn thành hồ sơ trong thời gian ngắn nhất, không trễ hẹn.</p>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
-                            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 border border-blue-500/30">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Linh hoạt Online</h4>
-                            <p class="text-slate-400 text-sm">"Trao đổi dễ dàng qua Zalo/Email, phục vụ khách hàng trên toàn quốc."</p>
-                        </div>
+                        <h4 class="font-bold text-xl">An toàn Tuyệt đối</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Dữ liệu doanh nghiệp được bảo mật 100% trên nền tảng Cloud hiện đại.</p>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
-                            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 border border-green-500/30">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Tối ưu chi phí</h4>
-                            <p class="text-slate-400 text-sm">"Mức phí cạnh tranh, phù hợp với quy mô doanh nghiệp nhỏ & siêu nhỏ."</p>
+                        <h4 class="font-bold text-xl">Tối ưu Chi phí</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Mô hình Online giúp bạn tiết kiệm chi phí thuê kế toán nội bộ tại văn phòng.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 border border-purple-500/30">
+                            <i data-lucide="headphones" class="w-6 h-6"></i>
                         </div>
+                        <h4 class="font-bold text-xl">Hỗ trợ 24/7</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Luôn có chuyên viên trực tuyến để giải đáp mọi thắc mắc về thuế của bạn.</p>
                     </div>
                 </div>
             </div>
-            <div class="lg:w-1/2 relative">
-                <div class="aspect-square bg-slate-800 rounded-3xl overflow-hidden flex items-center justify-center border border-slate-700">
-                    <!-- Placeholder cho hình ảnh hoặc Logo lớn -->
-                    <div class="text-center p-12">
-                        <i data-lucide="award" class="w-20 h-20 text-primary mx-auto mb-6 opacity-20"></i>
-                        <p class="text-2xl font-light italic text-slate-400">"Tâm - Tầm - Tín là kim chỉ nam cho mọi hoạt động của Kế Toán Phương Linh"</p>
+            <div class="lg:w-1/2 relative reveal">
+                <div class="float-anim">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=800" class="rounded-[3rem] shadow-2xl border-4 border-slate-800" alt="Team Work">
+                    <div class="absolute -bottom-10 -left-10 bg-primary p-8 rounded-3xl shadow-2xl hidden md:block">
+                        <p class="text-3xl font-black">10+</p>
+                        <p class="text-xs font-bold uppercase tracking-widest text-white/80">Năm Thực Chiến</p>
                     </div>
                 </div>
-                <!-- Trang trí -->
-                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+                <!-- Decorations -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
+    <!-- Workflow Steps -->
+    <section class="py-20 px-4" id="process">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-extrabold mb-4">Quy trình hợp tác 3 bước</h2>
+                <p class="text-slate-500">Đơn giản - Nhanh chóng - Hiệu quả</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 bg-amber-50 text-primary rounded-3xl flex items-center justify-center text-3xl font-black mx-auto mb-8 shadow-sm">1</div>
+                    <h3 class="text-xl font-bold mb-4">Kết nối & Tư vấn</h3>
+                    <p class="text-slate-500">Chúng tôi lắng nghe nhu cầu và phân tích thực trạng thuế của doanh nghiệp.</p>
+                </div>
+                <div class="text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 bg-amber-50 text-primary rounded-3xl flex items-center justify-center text-3xl font-black mx-auto mb-8 shadow-sm">2</div>
+                    <h3 class="text-xl font-bold mb-4">Gửi hồ sơ Online</h3>
+                    <p class="text-slate-500">Bạn chỉ cần chụp ảnh hoặc gửi file qua Zalo/Email. Chúng tôi lo phần còn lại.</p>
+                </div>
+                <div class="text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-primary text-white rounded-3xl flex items-center justify-center text-3xl font-black mx-auto mb-8 shadow-lg">3</div>
+                    <h3 class="text-xl font-bold mb-4">Nhận Kết quả</h3>
+                    <p class="text-slate-500">Báo cáo thuế được hoàn tất đúng hạn, lưu trữ an toàn và bảo mật.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Contact Section -->
     <section class="py-20 px-4" id="contact">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col md:flex-row">
-                <div class="md:w-1/2 bg-slate-50 p-8 md:p-12">
-                    <h2 class="text-3xl font-bold mb-6">Liên hệ tư vấn</h2>
-                    <p class="text-slate-500 mb-8">Đừng để rủi ro về thuế cản trở sự nghiệp kinh doanh của bạn. Nhắn tin ngay cho chúng tôi!</p>
-                    
-                    <div class="space-y-6">
-                        <a href="tel:0918348822" class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-primary transition-all">
-                                <i data-lucide="phone" class="text-primary w-5 h-5 group-hover:text-white"></i>
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden flex flex-col lg:flex-row reveal">
+                <div class="lg:w-[45%] bg-slate-900 p-12 lg:p-16 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-4xl font-black mb-8 leading-tight">Đã đến lúc giải phóng bạn khỏi áp lực về Thuế!</h2>
+                        <p class="text-slate-400 mb-12 text-lg">Liên hệ ngay để nhận ưu đãi miễn phí tư vấn rà soát sổ sách cũ trong tháng này.</p>
+                        
+                        <div class="space-y-8">
+                            <a href="tel:0918348822" class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-all">
+                                    <i data-lucide="phone" class="text-primary w-6 h-6 group-hover:text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-primary font-black uppercase tracking-[0.2em] mb-1">Hotline Ms. Phương</p>
+                                    <p class="font-bold text-xl">0918.348.822</p>
+                                </div>
+                            </a>
+                            <a href="tel:0377047792" class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-all">
+                                    <i data-lucide="phone" class="text-primary w-6 h-6 group-hover:text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-primary font-black uppercase tracking-[0.2em] mb-1">Hotline Ms. Linh</p>
+                                    <p class="font-bold text-xl">0377.047.792</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-12 pt-12 border-t border-slate-800">
+                        <div class="flex items-center gap-4">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-[10px] font-bold">PL</div>
+                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[10px] font-bold text-slate-900">2024</div>
                             </div>
-                            <div>
-                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline Ms. Phương</p>
-                                <p class="font-bold text-lg">0918.348.822</p>
-                            </div>
-                        </a>
-                        <a href="tel:0377047792" class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-primary transition-all">
-                                <i data-lucide="phone" class="text-primary w-5 h-5 group-hover:text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline Ms. Linh</p>
-                                <p class="font-bold text-lg">0377.047.792</p>
-                            </div>
-                        </a>
+                            <span class="text-sm text-slate-400">Đồng hành cùng sự phát triển của bạn.</span>
+                        </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                    <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Chúng tôi sẽ liên hệ lại sớm nhất.');" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Tên của bạn</label>
-                            <input type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                
+                <div class="lg:w-[55%] p-12 lg:p-16">
+                    <h3 class="text-2xl font-bold mb-8">Để lại thông tin, chúng tôi sẽ gọi lại ngay!</h3>
+                    <form onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Tên đầy đủ</label>
+                                <input type="text" required placeholder="Nguyễn Văn A" class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Số điện thoại</label>
+                                <input type="tel" required placeholder="090..." class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                            </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Số điện thoại</label>
-                            <input type="tel" placeholder="090..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Dịch vụ quan tâm</label>
+                            <select class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                                <option>Kế toán Thuế trọn gói</option>
+                                <option>Báo cáo tài chính năm</option>
+                                <option>Bảo hiểm xã hội</option>
+                                <option>Tư vấn khác...</option>
+                            </select>
                         </div>
-                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-amber-100">
-                            Gửi yêu cầu tư vấn
+                        <div>
+                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Lời nhắn của bạn (Tùy chọn)</label>
+                            <textarea rows="4" placeholder="Bạn cần chúng tôi hỗ trợ gì?" class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-5 rounded-2xl font-bold text-lg hover:bg-[#a16402] transition-all shadow-xl shadow-amber-100 flex items-center justify-center gap-3">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Gửi yêu cầu ngay
                         </button>
+                        <div id="success-msg" class="hidden p-4 bg-green-50 text-green-700 rounded-xl text-center font-medium animate-bounce mt-4">
+                            Cảm ơn bạn! Chúng tôi sẽ liên hệ trong ít phút.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -257,36 +411,112 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-100 py-12 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-black rounded flex items-center justify-center">
-                    <i data-lucide="shield-check" class="text-white w-5 h-5"></i>
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-black rounded-xl flex items-center justify-center">
+                        <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-lg tracking-tight uppercase block">Kế Toán Phương Linh</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Tin cậy trên từng con số</span>
+                    </div>
                 </div>
-                <span class="font-bold tracking-tight uppercase">Kế Toán Phương Linh</span>
+                
+                <div class="flex flex-wrap gap-8 text-sm font-semibold text-slate-500">
+                    <a href="#services" class="hover:text-primary">Dịch vụ</a>
+                    <a href="#about" class="hover:text-primary">Về chúng tôi</a>
+                    <a href="https://zalo.me/0918348822" class="hover:text-primary">Hỗ trợ</a>
+                    <a href="#" class="hover:text-primary">Chính sách bảo mật</a>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
             </div>
-            <div class="text-slate-400 text-sm">
-                © 2024 Phuong Linh Tax Accounting. Developed with Passion.
-            </div>
-            <div class="flex gap-4">
-                <a href="#" class="text-slate-400 hover:text-primary transition-all"><i data-lucide="facebook"></i></a>
-                <a href="#" class="text-slate-400 hover:text-primary transition-all"><i data-lucide="mail"></i></a>
+            <div class="mt-12 pt-8 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-widest gap-4">
+                <p>© 2024 Phuong Linh Tax Accounting. All Rights Reserved.</p>
+                <p>Mã số thuế: 010xxxxxxx</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Mobile Actions -->
-    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <a href="tel:0918348822" class="w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-slate-800 border border-slate-100 hover:scale-110 transition-all">
-            <i data-lucide="phone-call" class="w-6 h-6"></i>
+    <!-- Floating Actions -->
+    <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-[99]">
+        <a href="tel:0918348822" class="w-16 h-16 bg-white rounded-full shadow-2xl flex items-center justify-center text-slate-800 border border-slate-100 hover:scale-110 active:scale-95 transition-all group relative">
+            <i data-lucide="phone-call" class="w-7 h-7"></i>
+            <span class="absolute right-20 bg-white px-4 py-2 rounded-xl shadow-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-slate-100">Gọi ngay: 0918.348.822</span>
         </a>
-        <a href="https://zalo.me/0918348822" class="w-14 h-14 bg-primary rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 transition-all">
-            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <a href="https://zalo.me/0918348822" class="w-16 h-16 bg-primary rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all group relative">
+            <i data-lucide="message-circle" class="w-7 h-7"></i>
+            <span class="absolute right-20 bg-primary px-4 py-2 rounded-xl shadow-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Chat Zalo miễn phí</span>
         </a>
     </div>
 
     <script>
-        // Khởi tạo Lucide Icons
+        // Init Lucide Icons
         lucide.createIcons();
+
+        // Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function setSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('bg-primary', 'w-8', 'active-dot');
+            dots[currentSlide].classList.add('bg-white/30', 'w-3');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('bg-primary', 'w-8', 'active-dot');
+            dots[currentSlide].classList.remove('bg-white/30', 'w-3');
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            setSlide(next);
+        }
+
+        setInterval(nextSlide, 5000);
+        // Set initial dot state
+        setSlide(0);
+
+        // Scroll Reveal Logic
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger counter if element has counters
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const increment = target / 50;
+                        
+                        if (count === 0 && target > 0) {
+                            const updateCount = () => {
+                                const current = +counter.innerText;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current + increment);
+                                    setTimeout(updateCount, 40);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCount();
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
