@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kế Toán Phương Linh - Giải pháp Thuế Trọn gói Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc;
+        }
+        .text-primary { color: #c27803; } /* Màu cam từ logo */
+        .bg-primary { background-color: #c27803; }
+        .border-primary { border-color: #c27803; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(194, 120, 3, 0.05), transparent),
+                        radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.02), transparent);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        /* Tắt thanh cuộn nhưng vẫn cho phép cuộn */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <!-- Giả lập Logo -->
+                <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center p-1">
+                    <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-bold text-lg tracking-tight uppercase">Phuong Linh</span>
+                    <span class="text-[10px] text-slate-500 font-medium uppercase tracking-widest">Tax Accounting</span>
+                </div>
+            </div>
+            <a href="https://zalo.me/0918348822" class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Zalo Ngay</span>
+                <span class="sm:hidden">Liên hệ</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4 hero-gradient">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-block px-3 py-1 bg-amber-50 text-primary text-xs font-bold rounded-full border border-amber-100 mb-6 uppercase tracking-wider">
+                Giải pháp Thuế 4.0
+            </span>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Giải pháp Kế toán Thuế tốt nhất cho <span class="text-primary italic">Doanh nghiệp nhỏ</span>
+            </h1>
+            <p class="text-slate-600 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+                An tâm kinh doanh – Chúng tôi lo thuế! Dịch vụ trọn gói ONLINE, giúp bạn tiết kiệm 70% thời gian và chi phí.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-200">
+                    Nhận tư vấn miễn phí
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <div class="flex items-center justify-center gap-4 py-2">
+                    <div class="flex -space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold">PL</div>
+                        <div class="w-8 h-8 rounded-full bg-amber-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-primary">10Y</div>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500">10 năm kinh nghiệm thực chiến</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="max-w-6xl mx-auto px-4 -mt-8 relative z-10">
+        <div class="bg-white rounded-2xl shadow-xl shadow-slate-100 border border-slate-50 p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">10+</div>
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Năm kinh nghiệm</div>
+            </div>
+            <div class="text-center border-l border-slate-100">
+                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">500+</div>
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Khách hàng</div>
+            </div>
+            <div class="text-center border-l border-slate-100">
+                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">100%</div>
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Làm việc Online</div>
+            </div>
+            <div class="text-center border-l border-slate-100">
+                <div class="text-2xl md:text-3xl font-bold text-primary mb-1">0đ</div>
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Phí tư vấn ban đầu</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="py-20 px-4 bg-white" id="services">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Dịch vụ chúng tôi cung cấp</h2>
+                <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
+                        <i data-lucide="calculator" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-snug">Kê khai thuế GTGT, TNCN, TNDN</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Đảm bảo kê khai đúng hạn (Tháng/Quý), tránh mọi rủi ro về mức phạt thuế.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
+                        <i data-lucide="file-text" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-snug">Lập Báo cáo tài chính năm</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Quyết toán thuế cuối năm chính xác, minh bạch cho doanh nghiệp và hộ kinh doanh.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
+                        <i data-lucide="book-open" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-snug">Hoàn thiện sổ sách nội bộ</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Xây dựng hệ thống sổ sách kế toán khoa học, dễ dàng theo dõi dòng tiền.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card p-8 rounded-2xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6">
+                        <i data-lucide="users" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 leading-snug">Lao động & Bảo hiểm xã hội</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Hỗ trợ soạn thảo hợp đồng, báo cáo lao động và thủ tục BHXH nhanh chóng.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="py-20 px-4 bg-slate-900 text-white overflow-hidden relative">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl font-bold mb-8 leading-tight">Vì sao hàng trăm doanh nghiệp tin tưởng chúng tôi?</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
+                            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Chuyên môn sâu</h4>
+                            <p class="text-slate-400 text-sm italic">"Am hiểu luật thuế, xử lý mọi tình huống nhanh nhẹn."</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
+                            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Linh hoạt Online</h4>
+                            <p class="text-slate-400 text-sm">"Trao đổi dễ dàng qua Zalo/Email, phục vụ khách hàng trên toàn quốc."</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
+                            <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Tối ưu chi phí</h4>
+                            <p class="text-slate-400 text-sm">"Mức phí cạnh tranh, phù hợp với quy mô doanh nghiệp nhỏ & siêu nhỏ."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <div class="aspect-square bg-slate-800 rounded-3xl overflow-hidden flex items-center justify-center border border-slate-700">
+                    <!-- Placeholder cho hình ảnh hoặc Logo lớn -->
+                    <div class="text-center p-12">
+                        <i data-lucide="award" class="w-20 h-20 text-primary mx-auto mb-6 opacity-20"></i>
+                        <p class="text-2xl font-light italic text-slate-400">"Tâm - Tầm - Tín là kim chỉ nam cho mọi hoạt động của Kế Toán Phương Linh"</p>
+                    </div>
+                </div>
+                <!-- Trang trí -->
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-20 px-4" id="contact">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/2 bg-slate-50 p-8 md:p-12">
+                    <h2 class="text-3xl font-bold mb-6">Liên hệ tư vấn</h2>
+                    <p class="text-slate-500 mb-8">Đừng để rủi ro về thuế cản trở sự nghiệp kinh doanh của bạn. Nhắn tin ngay cho chúng tôi!</p>
+                    
+                    <div class="space-y-6">
+                        <a href="tel:0918348822" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-primary transition-all">
+                                <i data-lucide="phone" class="text-primary w-5 h-5 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline Ms. Phương</p>
+                                <p class="font-bold text-lg">0918.348.822</p>
+                            </div>
+                        </a>
+                        <a href="tel:0377047792" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-primary transition-all">
+                                <i data-lucide="phone" class="text-primary w-5 h-5 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline Ms. Linh</p>
+                                <p class="font-bold text-lg">0377.047.792</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Chúng tôi sẽ liên hệ lại sớm nhất.');" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Tên của bạn</label>
+                            <input type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Số điện thoại</label>
+                            <input type="tel" placeholder="090..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-amber-100">
+                            Gửi yêu cầu tư vấn
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-black rounded flex items-center justify-center">
+                    <i data-lucide="shield-check" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="font-bold tracking-tight uppercase">Kế Toán Phương Linh</span>
+            </div>
+            <div class="text-slate-400 text-sm">
+                © 2024 Phuong Linh Tax Accounting. Developed with Passion.
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="text-slate-400 hover:text-primary transition-all"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-slate-400 hover:text-primary transition-all"><i data-lucide="mail"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Mobile Actions -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+        <a href="tel:0918348822" class="w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center text-slate-800 border border-slate-100 hover:scale-110 transition-all">
+            <i data-lucide="phone-call" class="w-6 h-6"></i>
+        </a>
+        <a href="https://zalo.me/0918348822" class="w-14 h-14 bg-primary rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 transition-all">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </a>
+    </div>
+
+    <script>
+        // Khởi tạo Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
