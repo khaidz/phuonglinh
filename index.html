@@ -12,17 +12,17 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ketoanphuonglinh.com/">
+    <meta property="og:url" content="https://khaidz.github.io/phuonglinh">
     <meta property="og:title" content="Kế Toán Phương Linh - Giải pháp Thuế Trọn gói Online">
     <meta property="og:description" content="An tâm kinh doanh – Chúng tôi lo thuế! Dịch vụ trọn gói ONLINE, giúp bạn tiết kiệm thời gian và rủi ro pháp lý.">
-    <meta property="og:image" content="./images/full-logo.png">
+    <meta property="og:image" content="https://khaidz.github.io/phuonglinh/images/full-logo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ketoanphuonglinh.com/">
+    <meta property="twitter:url" content="https://khaidz.github.io/phuonglinh">
     <meta property="twitter:title" content="Kế Toán Phương Linh - Giải pháp Thuế Trọn gói Online">
     <meta property="twitter:description" content="An tâm kinh doanh – Chúng tôi lo thuế! Dịch vụ trọn gói ONLINE chuyên nghiệp.">
-    <meta property="twitter:image" content="./images/full-logo.png">
+    <meta property="twitter:image" content="https://khaidz.github.io/phuonglinh/images/full-logo.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./images/favicon.png">
@@ -139,6 +139,12 @@
                 opacity: 0;
             }
         }
+
+        /* Pricing Table Styles */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
     </style>
 </head>
 <body class="text-slate-900 overflow-x-hidden">
@@ -158,6 +164,7 @@
             
             <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
                 <a href="#services" class="hover:text-primary transition-colors">Dịch vụ</a>
+                <a href="#pricing" class="hover:text-primary transition-colors">Báo giá</a>
                 <a href="#process" class="hover:text-primary transition-colors">Quy trình</a>
                 <a href="#about" class="hover:text-primary transition-colors">Về chúng tôi</a>
                 <a href="#contact" class="hover:text-primary transition-colors">Liên hệ</a>
@@ -310,6 +317,128 @@
         </div>
     </section>
 
+    <!-- PRICING SECTION (INTEGRATED) -->
+    <section class="py-16 md:py-24 px-4 bg-white" id="pricing">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Báo giá minh bạch</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-4">Chi phí Dịch vụ Thuế</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Giải pháp tiết kiệm, tối ưu hóa lợi ích cho doanh nghiệp. Phí dịch vụ được tính dựa trên quy mô và đặc thù ngành nghề.</p>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden mb-12 border border-slate-100 reveal">
+                <div class="table-container">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-primary text-white">
+                                <th rowspan="2" class="p-6 text-sm font-bold border-r border-amber-700 w-1/4 align-middle text-center uppercase">
+                                    Số lượng hóa đơn (hoặc số hợp đồng)
+                                </th>
+                                <th colspan="4" class="p-4 text-center text-sm font-bold border-b border-amber-700 uppercase tracking-widest">
+                                    Phí dịch vụ / Tháng
+                                </th>
+                                <th colspan="4" class="p-4 text-center text-sm font-bold border-b border-amber-700 uppercase tracking-widest">
+                                    Phí dịch vụ / Năm
+                                </th>
+                            </tr>
+                            <tr class="bg-amber-700 text-white text-[10px] uppercase font-bold text-center">
+                                <th class="p-3 border-r border-amber-600">Thương mại</th>
+                                <th class="p-3 border-r border-amber-600">Sản xuất</th>
+                                <th class="p-3 border-r border-amber-600">Xây dựng</th>
+                                <th class="p-3 border-r border-amber-800">Dịch vụ</th>
+                                <th class="p-3 border-r border-amber-600">Thương mại</th>
+                                <th class="p-3 border-r border-amber-600">Sản xuất</th>
+                                <th class="p-3 border-r border-amber-600">Xây dựng</th>
+                                <th class="p-3">Dịch vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-slate-50 hover:bg-amber-50/30 transition">
+                                <td class="p-6 font-bold text-slate-700 bg-slate-50/50 border-r border-slate-100">Không có hóa đơn</td>
+                                <td class="p-4 text-center border-r border-slate-50">500k</td>
+                                <td class="p-4 text-center border-r border-slate-50">500k</td>
+                                <td class="p-4 text-center border-r border-slate-50">500k</td>
+                                <td class="p-4 text-center border-r border-slate-100 font-bold text-primary">500k</td>
+                                <td class="p-4 text-center border-r border-slate-50">3,000k</td>
+                                <td class="p-4 text-center border-r border-slate-50">3,000k</td>
+                                <td class="p-4 text-center border-r border-slate-50">3,000k</td>
+                                <td class="p-4 text-center">3,000k</td>
+                            </tr>
+                            <tr class="border-b border-slate-50 hover:bg-amber-50/30 transition">
+                                <td class="p-6 font-bold text-slate-700 bg-slate-50/50 border-r border-slate-100">Dưới 10 hóa đơn</td>
+                                <td class="p-4 text-center border-r border-slate-50">900k</td>
+                                <td class="p-4 text-center border-r border-slate-50 font-black text-primary">1,500k</td>
+                                <td class="p-4 text-center border-r border-slate-50 font-black text-primary">1,500k</td>
+                                <td class="p-4 text-center border-r border-slate-100">900k</td>
+                                <td class="p-4 text-center border-r border-slate-50">9,900k</td>
+                                <td class="p-4 text-center border-r border-slate-50">16,500k</td>
+                                <td class="p-4 text-center border-r border-slate-50">16,500k</td>
+                                <td class="p-4 text-center">9,900k</td>
+                            </tr>
+                            <tr class="border-b border-slate-50 hover:bg-amber-50/30 transition">
+                                <td class="p-6 font-bold text-slate-700 bg-slate-50/50 border-r border-slate-100">Dưới 20 hóa đơn</td>
+                                <td class="p-4 text-center border-r border-slate-50">1,500k</td>
+                                <td class="p-4 text-center border-r border-slate-50 font-black text-primary">2,900k</td>
+                                <td class="p-4 text-center border-r border-slate-50 font-black text-primary">2,900k</td>
+                                <td class="p-4 text-center border-r border-slate-100">1,500k</td>
+                                <td class="p-4 text-center border-r border-slate-50">16,500k</td>
+                                <td class="p-4 text-center border-r border-slate-50">31,900k</td>
+                                <td class="p-4 text-center border-r border-slate-50">31,900k</td>
+                                <td class="p-4 text-center">16,500k</td>
+                            </tr>
+                            <tr class="hover:bg-amber-50/30 transition">
+                                <td class="p-6 font-bold text-slate-700 bg-slate-50/50 border-r border-slate-100">Dưới 50 hóa đơn</td>
+                                <td class="p-4 text-center border-r border-slate-50">3,000k</td>
+                                <td class="p-4 text-center border-r border-slate-50 font-black text-primary">5,600k</td>
+                                <td class="p-4 text-center border-r border-slate-50 font-black text-primary">5,600k</td>
+                                <td class="p-4 text-center border-r border-slate-100">3,000k</td>
+                                <td class="p-4 text-center border-r border-slate-50">33,000k</td>
+                                <td class="p-4 text-center border-r border-slate-50">61,600k</td>
+                                <td class="p-4 text-center border-r border-slate-50">61,600k</td>
+                                <td class="p-4 text-center">33,000k</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 reveal" style="transition-delay: 200ms;">
+                <div class="bg-amber-50/50 p-8 rounded-3xl border border-amber-100">
+                    <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <i data-lucide="info" class="w-5 h-5 text-primary"></i>
+                        Ghi chú Thanh toán
+                    </h4>
+                    <ul class="space-y-3 text-sm text-slate-600 font-medium">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary">•</span>
+                            Thanh toán cọc 50% vào ngày ký hợp đồng dịch vụ.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary">•</span>
+                            Thanh toán 50% còn lại vào cuối tháng, quý.
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <i data-lucide="plus-circle" class="w-5 h-5 text-primary"></i>
+                        Dịch vụ bổ sung (TNCN)
+                    </h4>
+                    <div class="space-y-2 text-sm text-slate-600 font-medium">
+                        <div class="flex justify-between border-b border-slate-200 pb-2">
+                            <span>Tờ khai 05KK/TNCN</span>
+                            <span class="text-primary font-bold">100k/tháng • 1.000k/năm</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span>Quyết toán TNCN (05 QTT)</span>
+                            <span class="text-primary font-bold">1.000k/năm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Us -->
     <section class="py-12 md:py-24 px-4 bg-slate-900 text-white overflow-hidden" id="about">
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-20">
@@ -372,7 +501,7 @@
         </div>
     </section>
 
-    <!-- Workflow Steps (Updated with Arrows and Flow) -->
+    <!-- Workflow Steps -->
     <section class="py-16 md:py-20 px-4 bg-slate-50/50" id="process">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -394,11 +523,9 @@
                             <div class="w-24 h-24 bg-white text-primary rounded-full flex items-center justify-center text-3xl font-black mx-auto shadow-xl border-4 border-slate-50 group-hover:border-primary group-hover:scale-110 transition-all duration-500">
                                 01
                             </div>
-                            <!-- Mobile Arrow (Down) -->
                             <div class="md:hidden absolute -bottom-10 left-1/2 -translate-x-1/2 text-primary/30">
                                 <i data-lucide="chevron-down" class="w-8 h-8"></i>
                             </div>
-                            <!-- Desktop Arrow (Right) -->
                             <div class="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 text-primary/30 group-hover:translate-x-2 group-hover:text-primary transition-all">
                                 <i data-lucide="chevron-right" class="w-8 h-8"></i>
                             </div>
@@ -413,11 +540,9 @@
                             <div class="w-24 h-24 bg-white text-primary rounded-full flex items-center justify-center text-3xl font-black mx-auto shadow-xl border-4 border-slate-50 group-hover:border-primary group-hover:scale-110 transition-all duration-500">
                                 02
                             </div>
-                            <!-- Mobile Arrow (Down) -->
                             <div class="md:hidden absolute -bottom-10 left-1/2 -translate-x-1/2 text-primary/30">
                                 <i data-lucide="chevron-down" class="w-8 h-8"></i>
                             </div>
-                            <!-- Desktop Arrow (Right) -->
                             <div class="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 text-primary/30 group-hover:translate-x-2 group-hover:text-primary transition-all">
                                 <i data-lucide="chevron-right" class="w-8 h-8"></i>
                             </div>
@@ -551,9 +676,9 @@
                     <h4 class="font-bold text-slate-900 mb-6 uppercase text-xs tracking-[0.2em]">Khám phá</h4>
                     <ul class="space-y-4 text-sm font-semibold text-slate-500">
                         <li><a href="#services" class="hover:text-primary transition-colors flex items-center gap-2 group"><i data-lucide="chevron-right" class="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-all"></i> Dịch vụ kế toán</a></li>
+                        <li><a href="#pricing" class="hover:text-primary transition-colors flex items-center gap-2 group"><i data-lucide="chevron-right" class="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-all"></i> Báo giá dịch vụ</a></li>
                         <li><a href="#process" class="hover:text-primary transition-colors flex items-center gap-2 group"><i data-lucide="chevron-right" class="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-all"></i> Quy trình làm việc</a></li>
                         <li><a href="#about" class="hover:text-primary transition-colors flex items-center gap-2 group"><i data-lucide="chevron-right" class="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-all"></i> Về chúng tôi</a></li>
-                        <li><a href="#contact" class="hover:text-primary transition-colors flex items-center gap-2 group"><i data-lucide="chevron-right" class="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-all"></i> Liên hệ tư vấn</a></li>
                     </ul>
                 </div>
 
@@ -625,14 +750,12 @@
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-particle');
-            
-            // SVG heart icon
             heart.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
             
             const size = Math.random() * 15 + 10;
             const left = Math.random() * 100;
-            const duration = Math.random() * 4 + 6; // 6-10s
-            const blur = Math.random() * 3 + 1; // 1-4px blur
+            const duration = Math.random() * 4 + 6;
+            const blur = Math.random() * 3 + 1;
             
             heart.style.width = `${size}px`;
             heart.style.height = `${size}px`;
@@ -640,21 +763,15 @@
             heart.style.animationDuration = `${duration}s`;
             heart.style.filter = `blur(${blur}px)`;
             
-            // Color variation within brand gold/amber
             const opacity = Math.random() * 0.3 + 0.1;
             heart.style.color = `rgba(194, 120, 3, ${opacity})`;
 
             document.body.appendChild(heart);
-
-            // Cleanup
-            setTimeout(() => {
-                heart.remove();
-            }, duration * 1000);
+            setTimeout(() => heart.remove(), duration * 1000);
         }
 
-        // Start creating hearts after page load
         window.addEventListener('DOMContentLoaded', () => {
-            setInterval(createHeart, 600); // Create a heart every 0.6s
+            setInterval(createHeart, 600);
         });
 
         let currentSlide = 0;
@@ -711,3 +828,5 @@
     </script>
 </body>
 </html>
+
+```
