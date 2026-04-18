@@ -64,11 +64,17 @@
 
         /* Slider Styles */
         .slide {
-            display: none;
-            animation: fade 1.5s ease-in-out;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 0;
+            transition: opacity 1.5s ease-in-out, transform 2s ease-out;
+            transform: scale(1.05); /* Tạo hiệu ứng zoom nhẹ khi ẩn */
         }
         .slide.active {
-            display: block;
+            opacity: 1;
+            z-index: 1;
+            transform: scale(1); /* Zoom về chuẩn khi hiện */
         }
         @keyframes fade {
             from { opacity: 0.4; transform: scale(1.05); }
@@ -779,12 +785,14 @@
         const dots = document.querySelectorAll('.slider-dot');
 
         function setSlide(index) {
+            // Loại bỏ các class cũ của slide hiện tại
             slides[currentSlide].classList.remove('active');
             dots[currentSlide].classList.remove('bg-primary', 'w-8', 'active-dot');
             dots[currentSlide].classList.add('bg-white/30', 'w-3');
             
             currentSlide = index;
             
+            // Kích hoạt slide mới
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('bg-primary', 'w-8', 'active-dot');
             dots[currentSlide].classList.remove('bg-white/30', 'w-3');
